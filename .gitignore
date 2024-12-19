@@ -32,3 +32,23 @@
 *.app
 
 *.vs
+
+
+# Visual Studio
+.vs/
+*.vcxproj.user
+*.vcxproj.filters
+
+# Build outputs
+*.obj
+*.exe
+*.pdb
+*.ilk
+*.lib
+*.dll
+
+# Intermediate files
+Debug/
+Release/
+x64/
+x86/
