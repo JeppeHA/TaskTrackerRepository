@@ -129,6 +129,12 @@
   <ItemGroup>
     <ClCompile Include="TaskTracker.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="TaskTracker.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="json_parser.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
