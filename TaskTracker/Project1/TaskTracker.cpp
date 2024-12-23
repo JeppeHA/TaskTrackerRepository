@@ -10,14 +10,23 @@ string fileName = "TaskTracker.json";
 
 fstream file;
 
-bool fileExists(const string& fileName) {
-	ifstream file(fileName);
-	return file.is_open();
-}
-
-
-
 void createTask() {
+	
+
+	bool noTasks = true;
+
+	// Read from the text file
+	ifstream MyReadFile(fileName);
+
+	string line;
+
+
+	// Use a while loop together with the getline() function to read the file line by line
+	while (getline(MyReadFile, line)) {
+		if (line.find("id") != std::string::npos) {
+			noTasks = false;
+		}
+	}
 
 	cout << "Enter task name: ";
 	string taskName;
@@ -43,15 +52,22 @@ void createTask() {
 
 
 	//Opens the file and appends it
-	file.open(fileName, ios::out);//append
+	file.open(fileName, ios::app);//append
 	if (file.is_open()) {
-		file << taskName << " = {\n";
+		file << "\n";
+		if (!noTasks) {
+			file << ",";
+		}
+
+		file << "\n{ \n";
+		file << "  \"name\": \"" << taskName << "\",\n";
 		file << "  \"id\": \"" << id << "\",\n";
 		file << "  \"description\": \"" << description << "\",\n";
 		file << "  \"status\": \"" << status << "\",\n";
 		file << "  \"createdAt\": \"" << createdAt << "\",";
 		file << "  \"updatedAt\": \"" << updatedAt << "\"\n";
-		file << "}" << endl;
+		file << "}";
+		
 		file.close();
 	}
 
